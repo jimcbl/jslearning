@@ -68,8 +68,3 @@ var o = {
   h: h
 };
 console.log(o.a, o.f(), o.g(), o.h()); // 37,37, azerty, azerty
-
-// arrow function
-var globalObject = this;
-var foo = () => this;
-console.log(foo() === globalObject); // true
