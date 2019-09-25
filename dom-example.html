@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple DOM example</title>
+    <style>
+      .highlight {
+        color: white;
+        background-color: black;
+        padding: 10px;
+        width: 250px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img
+        src="dinosaur.png"
+        alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth."
+      />
+      <p>
+        Here we will add a link to the
+        <a href="https://www.mozilla.org/">Mozilla homepage</a>
+      </p>
+    </section>
+    <script>
+      // To manipulate an element inside the DOM,
+      // you first need to select it and store a reference to it inside a variable
+      var link = document.querySelector("a");
+
+      // These are defined on interfaces like HTMLAnchorElement in the case of <a> element,
+      // its more general parent interface HTMLElement, and Node
+
+      link.textContent = "Mozilla Developer Network";
+      link.href = "https://developer.mozilla.org";
+
+      // reference to the <section> element
+      var sect = document.querySelector("section");
+
+      // create a new paragraph
+      var para = document.createElement("p");
+      para.textContent = "We hope you enjoyed the ride.";
+
+      // append the new paragraph
+      sect.appendChild(para);
+
+      // First we will create the text node using
+      var text = document.createTextNode(
+        ` — the premier source for web development knowledge.`
+      );
+
+      // grab a reference to the paragraph the link is inside, and append the text node to it:
+      var linkPara = document.querySelector("p");
+      linkPara.appendChild(text);
+
+      // remove element
+      // sect.removeChild(linkPara);
+      // linkPara.parentNode.removeChild(linkPara);
+
+      para.setAttribute("class", "highlight");
+    </script>
+  </body>
+</html>

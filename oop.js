@@ -19,18 +19,22 @@ function Person(first, last, age, gender, interests) {
   this.gender = gender;
   this.interests = interests;
 
-  //   this.bio = function() {
-  //     alert(`${this.name.first} ${this.name.last} is ${this.age} years old.
-  //             ${this.gender === "male" ? "He" : "She"} likes ${
-  //       this.interests[0]
-  //     } and ${this.interests[1]}.`);
-  //   };
+  this.bio = function() {
+    alert(`${this.name.first} ${this.name.last} is ${this.age} years old.
+              ${this.gender === "male" ? "He" : "She"} likes ${
+      this.interests[0]
+    } and ${this.interests[1]}.`);
+  };
   this.greeting = function() {
     alert("Hi! I'm " + this.name.first + ".");
   };
 }
 
 const person1 = new Person("Bob", "Smith", 32, "male", ["music", "skiing"]);
+
+///
+///  Inheritance
+///
 
 function Animal(name) {
   this.name = name;
@@ -40,11 +44,19 @@ Animal.prototype.speak = function() {
   console.log(`${this.name} makes a noise.`);
 };
 
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype = new Animal();
+
 class Dog extends Animal {
   speak() {
     console.log(`${this.name} barks.`);
   }
 }
+
+////
 
 let d = new Dog("Mitzie");
 d.speak(); // Mitzie barks.
@@ -67,7 +79,7 @@ class Person {
     return this.greeting();
   }
 
-  static subject(obj) {
+  static getSubject(obj) {
     return obj.gender === "male" ? "He" : "She";
   }
 
@@ -77,9 +89,9 @@ class Person {
 }
 
 const newPerson1 = new Person("Roger", "Federer", 37, "male", ["tennis"]);
-newPerson1.subject; //  undefined
+newPerson1.getSubject; //  undefined
 
-Person.subject(newPerson1); // He
+Person.getSubject(newPerson1); // He
 
 ////
 // Sub classing with extends
@@ -107,3 +119,24 @@ class Dog extends Animal {
 
 let d = new Dog("Mitzie");
 d.speak(); // Mitzie barks.
+
+///
+///  Encapsulation
+///
+
+function Person(_name) {
+  var name = _name;
+  this.setName = function(_name) {
+    name = _name;
+  };
+  this.getName = function() {
+    return name;
+  };
+}
+
+var person = new Person("John Park");
+console.log(person.name); // => undefined
+console.log(person.getName()); // => John Park
+
+person.setName("ZA");
+console.log(person.getName()); // => ZA
