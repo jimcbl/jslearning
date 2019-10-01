@@ -25,3 +25,9 @@ export { foo, awesome, bar };
 import { bar, foo as theFooFunc } from "foo";
 
 theFooFunc();
+
+const text = "hello"; // String là một iterable object
+for (const c of text) {
+    console.log(c);
+}
+// Output: "h" "e" "l" "l" "o"

@@ -68,3 +68,13 @@ quoted strings cannot.`;
 var name = "Bob";
 var time = "today";
 var s3 = `Hello ${name}, how are you ${time}?`;
+
+null == undefined; // These two values are treated as equal.
+"0" == 0; // String converts to a number before comparing.
+0 == false; // Boolean converts to number before comparing.
+"0" == false; // Both operands convert to numbers before comparing
+
+
+x + "" // Same as String(x)
++x // Same as Number(x). You may also see x-0
+!!x // Same as Boolean(x). Note double !
